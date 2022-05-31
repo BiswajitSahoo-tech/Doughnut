@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index-style.css">
+    <link rel="icon" type="image/png" href="favicon.ico"/>
+    <title>Doughnut | Online URL Shortner</title>
+</head>
+
+<body style = "font-family: sans-serif;">
+    <nav>
+        <div class="navbar">
+            <a href="doughnut.html" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                <img src="assets/doughnut.png" alt="logo">
+                <h3 class="text-dark navbar-text">Doughnut</h3>
+            </a>
+        </div>
+        <div class="form">
+            <a href="pages/sign-in.html" target="_blank" rel="noopener noreferrer"><button id="log-in">Log In</button></a>
+            <a href="pages/sign-up.html" target="_blank" rel="noopener noreferrer"><button id="sign-up">Sign Up</button></a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2 class="text" >Enter URL: </h2>
+        <input type="text" name="URL" style = "font-size: medium;" id="url" required="">
+        <button id="enter" onclick = loadocs()>Enter</button>
+        <h2 class="text-2">Short URL: </h2>
+        <input type="text" style = "font-size: medium;" name="URL-2" id="surl" readonly="">
+        <button id="copy" onclick = copy() >Copy</button>
+        <p id="line">Sign in to see all your previous links and their statistics</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <p id="line-2"></p>
+        
+    </div>
+    <script src="../js/encrypt.js"></script>
+    <script>
+    
+        var headr = document.getElementById("line");
+        var tbl =   document.getElementById("line-2");
+        var urlString = window.location.href;
+        let paramString = urlString.split('?')[1];
+        var UNAME_AVAIL = false ;
+        var tok ;
+        if(paramString !== undefined){
+            UNAME_AVAIL = true ; 
+            
+              
+            let queryString = new URLSearchParams(paramString);
+          
+            for (let pair of queryString.entries()) {
+               // alert((pair[1]));
+               //var cs = decode(pair[1]) ;
+               //alert(cs);
+                tok = JSON.parse(atob(pair[1])) ;
+                //tok =  ;
+            }
+            headr.innerHTML = "Welcome "+tok.name ;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function(){
+                tbl.innerHTML = this.responseText ;
+            }
+            xmlhttp.open("GET","script/contentGenarator.php?tok="+JSON.stringify(tok));
+            xmlhttp.send();
+            
+        }
+        
+        var elm1 = document.getElementById("url");
+        var url = elm1.value ;
+        var urlObj = {
+                     uid : "",
+                     url : "" ,
+                     desc : "" ,
+                     surl : "" ,
+                     INVALID_URL : false,
+                     EMPTY_URL : false,
+                     SUCCES : false,
+                     DB_INSER_FAIL : false
+            
+        };
+        if(UNAME_AVAIL)
+            urlObj.uid = tok.uname ; 
+        else
+            urlObj.uid = "anonymous" ;
+        
+        function loadocs(){
+            urlObj.url = elm1.value ;
+            var jsn = JSON.stringify(urlObj);
+            //console.log(jsn) ;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function(){
+                //console.log(this.responseText);
+                var obj = JSON.parse(this.responseText);
+                if(obj.EMPTY_URL)
+                    alert("Empty URL");
+                if(obj.INVALID_URL)
+                    alert("Invalid URL: Please provide a valid URL") ;
+                if(obj.DB_INSER_FAIL)
+                    alert("Database is not responding: Please try after some time");
+                if(obj.SUCCES){
+                    //echo(obj.surl);
+                    document.getElementById("surl").value = "https://dghnut.000webhostapp.com/i.php/"+obj.surl ;
+                    //document.getElementById("surl").innerHTML = "https://dnut.000webhostapp.com/i.php/"+obj.surl ;
+                }
+                
+            }
+            xmlhttp.open("POST","script/generatelink.php");
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //console.log(jsn);
+            xmlhttp.send("url="+jsn);
+            
+        }
+        
+        function copy() {
+            /* Get the text field */
+            var copyText = document.getElementById("surl");
+
+            /* Select the text field */
+            copyText.select();
+             copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+             /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+</body>
+
+</html>

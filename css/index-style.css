@@ -1,0 +1,608 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #00d2ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3a7bd5,
+    #00d2ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3a7bd5,
+    #00d2ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+nav img {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+nav h3 {
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  left: 4rem;
+  color: white;
+}
+
+nav #log-in {
+  position: absolute;
+  top: 1rem;
+  right: 5rem;
+  height: 2rem;
+  width: 3rem;
+  padding: 3px;
+}
+
+nav #sign-up {
+  position: absolute;
+  top: 1rem;
+  right: 0rem;
+  height: 2rem;
+  width: 4rem;
+  padding: 3px;
+}
+
+nav #log-in:hover {
+  background-color: rgb(46, 111, 209);
+  border-color: rgb(46, 111, 209);
+  color: white;
+}
+
+nav #sign-up:hover {
+  background-color: rgb(103, 197, 48);
+  border-color: rgb(103, 197, 48);
+}
+
+.container .text {
+  display: block;
+  position: absolute;
+  top: 7rem;
+  left: 4rem;
+  font-size: 24px;
+}
+
+.container #url {
+  display: inline-block;
+  position: absolute;
+  top: 10rem;
+  left: 2rem;
+  height: 2rem;
+  width: 9rem;
+  font-size: 0.6rem;
+}
+
+.container #enter {
+  position: relative;
+  top: 5.6rem;
+  left: 13rem;
+  height: 2rem;
+  width: 3rem;
+  padding: 3px;
+}
+
+.container #enter:hover {
+  background-color: rgb(209, 98, 46);
+  border-color: rgb(209, 98, 46);
+  color: white;
+}
+
+.container .text-2 {
+  display: block;
+  position: absolute;
+  top: 14rem;
+  left: 4rem;
+  font-size: 25px;
+}
+
+.container #url-2 {
+  display: inline-block;
+  position: absolute;
+  top: 17rem;
+  left: 2rem;
+  height: 2rem;
+  width: 9rem;
+  font-size: 0.6rem;
+}
+
+.container #copy {
+  position: relative;
+  top: 12.85rem;
+  left: 9.75rem;
+  height: 2rem;
+  width: 3rem;
+  padding: 3px;
+}
+
+.container #copy:hover {
+  background-color: rgb(239, 243, 24);
+  border-color: rgb(239, 243, 24);
+  color: black;
+}
+
+.container #line {
+  text-align: center;
+  position: relative;
+  top: 15rem;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+@media only screen and (min-width: 300px) {
+  nav img {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+
+  nav h3 {
+    display: inline-block;
+    position: absolute;
+    top: 0.75rem;
+    left: 3rem;
+  }
+
+  nav #log-in {
+    position: absolute;
+    top: 1rem;
+    right: 6rem;
+    height: 2rem;
+    width: 3rem;
+    padding: 3px;
+  }
+
+  nav #log-in:hover {
+    background-color: rgb(46, 111, 209);
+    border-color: rgb(46, 111, 209);
+    color: white;
+  }
+
+  nav #sign-up {
+    position: absolute;
+    top: 1rem;
+    right: 0.999rem;
+    height: 2rem;
+    width: 4rem;
+    padding: 3px;
+  }
+
+  nav #sign-up:hover {
+    background-color: rgb(103, 197, 48);
+    border-color: rgb(103, 197, 48);
+  }
+
+  .container .text {
+    display: block;
+    position: absolute;
+    top: 6rem;
+    left: 4rem;
+    font-size: 25px;
+  }
+
+  .container #url {
+    display: inline-block;
+    position: absolute;
+    top: 9rem;
+    left: 1rem;
+    height: 2rem;
+    width: 13rem;
+  }
+
+  .container #enter {
+    position: relative;
+    top: 6.3rem;
+    left: 15rem;
+    height: 2rem;
+    width: 3rem;
+    padding: 3px;
+  }
+
+  .container #enter:hover {
+    background-color: rgb(209, 98, 46);
+    border-color: rgb(209, 98, 46);
+    color: white;
+  }
+
+  .container .text-2 {
+    display: block;
+    position: absolute;
+    top: 13rem;
+    left: 4rem;
+    font-size: 25px;
+  }
+
+  .container #url-2 {
+    display: inline-block;
+    position: absolute;
+    top: 16rem;
+    left: 1rem;
+    height: 2rem;
+    width: 13rem;
+  }
+
+  .container #copy {
+    position: relative;
+    top: 13.3rem;
+    left: 11.75rem;
+    height: 2rem;
+    width: 3rem;
+    padding: 3px;
+  }
+
+  .container #copy:hover {
+    background-color: rgb(239, 243, 24);
+    border-color: rgb(239, 243, 24);
+    color: black;
+  }
+
+  .container #line {
+    text-align: center;
+    position: relative;
+    top: 15rem;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* SMARTPHONES LANDSCAPE */
+@media only screen and (min-width: 480px) {
+  nav img {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+
+  nav h3 {
+    display: inline-block;
+    position: absolute;
+    top: 1rem;
+    left: 4rem;
+  }
+
+  nav #log-in {
+    position: absolute;
+    top: 1rem;
+    right: 7rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  nav #log-in:hover {
+    background-color: rgb(46, 111, 209);
+    border-color: rgb(46, 111, 209);
+    color: white;
+  }
+
+  nav #sign-up {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  nav #sign-up:hover {
+    background-color: rgb(103, 197, 48);
+    border-color: rgb(103, 197, 48);
+  }
+
+  .container .text {
+    display: block;
+    position: absolute;
+    top: 10rem;
+    left: 1rem;
+    font-size: 25px;
+  }
+
+  .container #url {
+    display: inline-block;
+    position: absolute;
+    top: 10rem;
+    left: 10rem;
+    height: 2rem;
+    width: 13rem;
+  }
+
+  .container #enter {
+    position: relative;
+    top: 6.85rem;
+    left: 24rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  .container #enter:hover {
+    background-color: rgb(209, 98, 46);
+    border-color: rgb(209, 98, 46);
+    color: white;
+  }
+
+  .container .text-2 {
+    display: block;
+    position: absolute;
+    top: 15rem;
+    left: 1rem;
+    font-size: 25px;
+  }
+
+  .container #url-2 {
+    display: inline-block;
+    position: absolute;
+    top: 15rem;
+    left: 10rem;
+    height: 2rem;
+    width: 13rem;
+  }
+
+  .container #copy {
+    position: relative;
+    top: 11.85rem;
+    left: 18.75rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  .container #copy:hover {
+    background-color: rgb(239, 243, 24);
+    border-color: rgb(239, 243, 24);
+    color: black;
+  }
+
+  .container #line {
+    text-align: center;
+    position: relative;
+    top: 14rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* TABLETS PORTRAIT */
+@media only screen and (min-width: 768px) {
+  nav img {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+  }
+
+  nav h3 {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    left: 7rem;
+  }
+
+  nav #log-in {
+    position: absolute;
+    top: 2rem;
+    right: 7rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  nav #log-in:hover {
+    background-color: rgb(46, 111, 209);
+    border-color: rgb(46, 111, 209);
+    color: white;
+  }
+
+  nav #sign-up {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  nav #sign-up:hover {
+    background-color: rgb(103, 197, 48);
+    border-color: rgb(103, 197, 48);
+  }
+
+  .container .text {
+    display: block;
+    position: absolute;
+    top: 10rem;
+    left: 2rem;
+    font-size: 25px;
+  }
+
+  .container #url {
+    display: inline-block;
+    position: absolute;
+    top: 10rem;
+    left: 11rem;
+    height: 2rem;
+    width: 25rem;
+  }
+
+  .container #enter {
+    position: relative;
+    top: 4.85rem;
+    left: 37rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  .container #enter:hover {
+    background-color: rgb(209, 98, 46);
+    border-color: rgb(209, 98, 46);
+    color: white;
+  }
+
+  .container .text-2 {
+    display: block;
+    position: absolute;
+    top: 15rem;
+    left: 2rem;
+    font-size: 25px;
+  }
+
+  .container #url-2 {
+    display: inline-block;
+    position: absolute;
+    top: 15rem;
+    left: 11rem;
+    height: 2rem;
+    width: 25rem;
+  }
+
+  .container #copy {
+    position: relative;
+    top: 9.85rem;
+    left: 32rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  .container #copy:hover {
+    background-color: rgb(239, 243, 24);
+    border-color: rgb(239, 243, 24);
+    color: black;
+  }
+
+  .container #line {
+    text-align: center;
+    position: relative;
+    top: 14rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* TABLET LANDSCAPE / DESKTOP */
+@media only screen and (min-width: 1024px) {
+  nav img {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+  }
+
+  nav h3 {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    left: 7rem;
+  }
+
+  nav #log-in {
+    position: absolute;
+    top: 2rem;
+    right: 12rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  nav #sign-up {
+    position: absolute;
+    top: 2rem;
+    right: 6rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  nav #log-in:hover {
+    background-color: rgb(46, 111, 209);
+    border-color: rgb(46, 111, 209);
+    color: white;
+  }
+
+  nav #sign-up:hover {
+    background-color: rgb(103, 197, 48);
+    border-color: rgb(103, 197, 48);
+  }
+
+  .container .text {
+    display: block;
+    position: absolute;
+    top: 15rem;
+    left: 10rem;
+    font-size: 30px;
+  }
+
+  .container #url {
+    display: inline-block;
+    position: absolute;
+    top: 15rem;
+    left: 22rem;
+    height: 2rem;
+    width: 30rem;
+  }
+
+  .container #enter {
+    position: relative;
+    top: 9.85rem;
+    left: 55.25rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  .container #enter:hover {
+    background-color: rgb(209, 98, 46);
+    border-color: rgb(209, 98, 46);
+    color: white;
+  }
+
+  .container #line {
+    text-align: center;
+    position: relative;
+    top: 22rem;
+    font-size: 2rem;
+  }
+
+  .container .text-2 {
+    display: block;
+    position: absolute;
+    top: 20rem;
+    left: 10rem;
+    font-size: 30px;
+  }
+
+  .container #url-2 {
+    display: inline-block;
+    position: absolute;
+    top: 20rem;
+    left: 22rem;
+    height: 2rem;
+    width: 30rem;
+  }
+
+  .container #copy {
+    position: relative;
+    top: 14.85rem;
+    left: 50rem;
+    height: 2rem;
+    width: 5rem;
+    padding: 3px;
+  }
+
+  .container #copy:hover {
+    background-color: rgb(239, 243, 24);
+    border-color: rgb(239, 243, 24);
+    color: black;
+  }
+}

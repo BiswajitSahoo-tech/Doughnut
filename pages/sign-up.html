@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>User Registration</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="../css/form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <a href="../index.html" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+          <img class="d-block mx-auto mb-1 " src="../assets/doughnut.png" alt="" width="72" height="75">
+          <h5 class="h5 mb-3 fw-normal mb-4">Doughnut</h5>
+        </a>
+        <h2>Registration form</h2>
+      </div>
+   <h1 id = "dbug"></h1>
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control" id="fname" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="lname" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="username" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  <span id = "ind" class="input-group-text">@</span>
+                  <input type="text" class="form-control" onkeyup = unameCheck(this.value) id="uname" placeholder="Username" required>
+                  <div class="invalid-feedback" >
+                    Your username is required.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com" min = 7 max = 50>
+              </div>
+              <div class="col-12">
+                <label for="pwd" class="form-label">Password</label>
+                <input type="password" class="form-control" id="pwd" placeholder="" min = 6 max = 20>
+              </div>
+              <button class="w-100 btn btn-primary btn-lg" type="button" onclick = loadocs() >Register Yourself</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2021 Glitter Computing Club</p>
+    </footer>
+  </div>
+
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/form-validation.js"></script>
+  
+  
+  <script>
+     function unameCheck(str){
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function(){
+            //alert(this.responseText);
+            if(parseInt(this.responseText) == 1){
+                document.getElementById("ind").style.backgroundColor = "#06f906";
+            }
+            else{
+                 document.getElementById("ind").style.backgroundColor = "red";
+            }
+        }
+        xmlhttp.open("GET","../script/unamecheck.php?uname="+str);
+        xmlhttp.send();
+     }
+   getLocation();
+    let obj = {
+              
+              uname: "",
+              email: "",
+              fname : "",
+              lname: "",
+              pwd: "",
+              lat: "",
+              lan: "",
+              
+    };
+    function getLocation() {
+     if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(setPosition);
+     } else {
+       retrun ;
+     }
+  }
+  function setPosition(position) {
+     obj.lat += position.coords.latitude ;
+     obj.lan += position.coords.longitude ;
+  }
+  
+    
+    var elm1 = document.getElementById("email");
+    var elm2 = document.getElementById("pwd");
+   // var elm3 = document.getElementById("pwd-repeat");
+    var elm4 = document.getElementById("fname");
+    var elm5 = document.getElementById("lname");
+    var elm6 = document.getElementById("uname");
+    
+    
+
+    function loadocs(){
+        /*if(elm2.value.localeCompare(elm3.value) != 0){
+            alert("Password does not match");
+            return;
+        }*/
+        if (elm1.validity.rangeOverflow || elm1.validity.rangeUnderflow) {
+           alert(elm1.validationMessage);
+           return ;
+        }
+        if (elm2.validity.rangeOverflow || elm2.validity.rangeUnderflow) {
+           alert(elm2.validationMessage);
+           return ;
+       }
+        obj.email = elm1.value ;
+        obj.pwd = elm2.value ;
+        obj.uname = elm6.value ;
+        obj.fname = elm4.value ;
+        obj.lname = elm5.value ;
+        var jsn = JSON.stringify(obj);
+         //document.getElementById("dbug").innerHTML=jsn ;
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function(){
+            //var encodedString = encode(this.responseText);
+            //console.log(this.responseText);
+             //location.href = "https://dnut.000webhostapp.com/doughnut.html?tok="+this.responseText ;
+             var array = JSON.parse(this.responseText);
+             
+             var redirect = "https://dghnut.000webhostapp.com?tok="+array[1]  ;
+             //console.log(redirect);
+             //location.href = ("https://dnut.000webhostapp.com/doughnut.html?tok="+this.responseText);
+            var tok_obj = JSON.parse(array[0]);
+            if(tok_obj.SUCES)
+                location.href = redirect;
+            if(!tok_obj.DB_INSER){
+                alert("User name is not available.");
+                return;
+            }
+            if(tok_obj.FAIL){
+                alert("Server is not responding now. Please try after some time");
+                return;
+            }
+            
+            
+        }
+        xmlhttp.open("POST","../script/signup.php");
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("x="+jsn);
+        
+    }
+    
+</script>
+</body>
+
+</html>
